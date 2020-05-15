@@ -1,0 +1,56 @@
+level05.lesson12.bonus02; - пример быстрой соритровки;
+level07.lesson12.bonus03; - пример быстрой сортировки в обратном порядке.
+level07.lesson04.task01;  - поиск макс. среди чисел и ввод чисел в массив.
+level07.lesson04.task04;  - элегантно развернули массив.
+level07.lesson06.task03;  - пример подсчета времени выполения программы.
+level07.lesson09.task01;  - красиво использовали цикл for без инкремента шага.
+level07.lesson09.task03;  - использование Collections.addAll. Плюс идеальная идея добавления в список слов через слово.
+level08.lesson08.task04;  - пример использования итератора для Map и удаления значений "на лету".
+level08.lesson08.task05;  - пример удаления данных из Map через цикл for. Плюс использование Set в решении задачи.
+                            + мета пример того, как меняются местами объекты ПРАВИЛЬНО. Подробнее на http://microsin.net/programming/android/java-passing-parameters-to-method.html
+level08.lesson11.home03;  - пример показывает, что будет, если в map попытаться добавить два объекта с одним ключом: объект будет перезаписан по ключу.
+level08.lesson11.home09;  - пример работы с датой Java8 (закомментирован)
+level08.lesson11.bonus01; - пример установки даты и получения номера месяца.
+level08.lesson11.bonus03; - пример двунаправленной пузырьковой сортировки (сортировка строк).
+Examples.ExceptionExample - пример использования объекта StackTrace.
+level09.lesson02.task02;  - пример получения объекта StackTrace без создания объекта-массива.
+level09.lesson11.home04;  - пример использования SimpleDateFormat;
+level09.lesson11.home05;  - пример работы с множеством и посимвольной обработки строк.
+level09.lesson11.home06;  - пример использования абстрактного класса.
+level09.lesson11.home09;  - пример получения отдельного подмножества объктов из Map с пом. Set.addAll();
+level09.lesson11.bonus01; - пример копирования файлов.
+level09.lesson11.bonus03; - пример использования TreeMap (SortedMap) для сортировки строк.
+level10.lesson04.task04;
+level10.lesson04.task05;  - примеры преобразования char и short. И получения кода символа?..
+level10.lesson11.home05;  - пример подсчета букв в строках. Весьма элегантный.
+level10.lesson11.home04;  - пример использования ф-ии substring для строк.
+level10.lesson11.home08;  - пример создания массива, элементами которого будут списки строк (ArrayList<String>[]).
+level10.lesson11.home09;  - пример подсчета слов в строках с использованием MAP.
+level11.lesson11.bonus03; - пример использования Genetic Collection без указания типов коллекции!!!
+level12.lesson12.bonus03; - тоже самое :: class Pair<X, Y>!!!
+level13.lesson11.home03;  - пример чтения из файла. Плюс ссылка http://devcolibri.com/1141
+level13.lesson11.home04;  - пример чтения и записи в файл.
+level13.lesson11.bonus01; - пример четния из файла и сортировки на основе списка List.
+level14.lesson08.home03;  - пример создания класса по его имени; изменение регистра первого символа строки;
+level14.lesson08.home06;  - ввод значений с консоли, пока они в некотором множестве (как и в примере выше).
+level14.lesson08.bonus03; - пример шаблона Singleton
+level15.lesson09.task01;  - пример объявления static блока инициализации.
+level15.lesson09.task04;  - пример проброса RunTimeException в статическом блоке: небоходим if.
+level15.lesson09.task05;  - пример объявлени и создания класса в статическом блоке.
+level15.lesson12.home01;  - пример считывания строк до слова exit, использование try-catch и continue.
+level15.lesson12.home06;  - пример, показывающий порядок инициализации в объекте.
+level15.lesson12.bonus02; - Template pattern (шаблон проектирования Шаблон).
+level15.lesson12.bonus03; - пример использования BigInteger для вычисления факториала.
+level16.lesson03.task01-2;- примеры создания потоков (нитей).
+level16.lesson03.task05;  - более серьёзный пример использвания потоков.
+level16.lesson05          - весь урок с незатейливыми примерами потоков на освоение метода join.
+level16.lesson07.task03;  - пример работы с Calendar, Sleep, String.format.
+level16.lesson10.task01-02;  - пример бесконечного цикла со sleep & interrupt().
+level16.lesson13.home10;  - пример автозакрытия потоков (try-with-resources), чтение из файла, использование Paths. Чтение файлов в потоках.
+level16.lesson13.bonus03; - пример UncaughtExceptionHandler. Суть в том, что такой обработчик нужно устанавливать (в этой задаче) после старта нитей.
+level17.lesson10.bonus01; - пример обработки параметров (args) и очередной SimpleDateFormat.
+level18.lesson03.task05;  - пример использования TreeSet().
+level18.lesson10.home06;  - пример использования TreeSet().
+com.javarush.Examples : OverRideSystemIn - пример переписывания входного системного потока.
+level19.lesson10.home08;  - пример использования StringBuilder.reverse().
+level19.lesson10.home09;  - пример нормальной обёртки над System.out.
