@@ -56,4 +56,5 @@ level19.lesson10.home08;  - пример использования StringBuilde
 level19.lesson10.home09;  - пример нормальной обёртки над System.out.
 task20.task2001; - пример использования PrintWriter
 task31.task3113; - пример обхода папок с разными фишками.
+com/javarush/task/task31/task3105/ - пример работы с зип архивом.
 http://www.skipy.ru/technics/serialization.html - о сериализации. Много интересного и важного.

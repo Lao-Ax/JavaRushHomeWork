@@ -1,9 +1,6 @@
 package com.javarush.task.task31.task3105;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -13,7 +10,7 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /* 
-Добавление файла в архив
+Добавление файла в архив // Взято готовое решение.
 
 В метод main приходит список аргументов.
 Первый аргумент — полный путь к файлу fileName.
@@ -39,48 +36,72 @@ b.txt
 
 
 Требования:
-1. В методе main создай ZipInputStream для архивного файла (второй аргумент main). Нужно вычитать из него все содержимое.
-2. В методе main создай ZipOutputStream для архивного файла (второй аргумент main).
-3. В ZipOutputStream нужно записать содержимое файла, который приходит первым аргументом в main.
-4. В ZipOutputStream нужно записать все остальное содержимое, которое было вычитано из ZipInputStream.
-5. Потоки для работы с архивом должны быть закрыты.
+1. В методе main создай ZipInputStream для архивного файла (второй аргумент main). Нужно вычитать из него все содержимое.
+2. В методе main создай ZipOutputStream для архивного файла (второй аргумент main).
+3. В ZipOutputStream нужно записать содержимое файла, который приходит первым аргументом в main.
+4. В ZipOutputStream нужно записать все остальное содержимое, которое было вычитано из ZipInputStream.
+5. Потоки для работы с архивом должны быть закрыты.
 */
+
 public class Solution {
+
     public static void main(String[] args) throws IOException {
-        String filePath = args[0];
-        String zipPath = args[1];
-        String fileName = filePath.split("\\" + File.separator)[filePath.split("\\"+File.separator).length-1];
+        List<Content> entries = getContents(args[1]);
 
-        List<ZipEntry> zipEntries = readZip(zipPath);
+        FileOutputStream zipFile = new FileOutputStream(args[1]);
+        ZipOutputStream zip = new ZipOutputStream(zipFile);
 
-        FileOutputStream zipFile = new FileOutputStream(zipPath);
-        ZipOutputStream zipStream = new ZipOutputStream(zipFile);
+        //кладем в него ZipEntry –«архивный объект»
+        File file = new File(args[0]);
+        zip.putNextEntry(new ZipEntry("new/" + file.getName()));
 
-        for (ZipEntry zipEntry : zipEntries) {
-            if (zipEntry != null) {
-                zipStream.putNextEntry(zipEntry);
-            }
+        //копируем файл «document-for-archive.txt» в архив под именем «document.txt»
+        Files.copy(file.toPath(), zip);
+
+        //копируем все остальные файлы
+        for (Content content : entries) {
+            if (!content.getFileName().equals("new/" + file.getName())) content.saveToZip(zip);
         }
 
-        zipStream.putNextEntry(new ZipEntry(fileName));
-
-        Files.copy(Paths.get(filePath), zipStream);
-
-        zipFile.close();
-        zipStream.close();
+        // закрываем архив
+        zip.close();
     }
 
-    private static List<ZipEntry> readZip(String zipPath) throws IOException {
-        FileInputStream zipFile = new FileInputStream(zipPath);
-        ZipInputStream zipStream = new ZipInputStream(zipFile);
-        List<ZipEntry> zipEntries = new ArrayList<>();
+    private static List<Content> getContents(String arg) throws IOException {
+        List<Content> entries = new ArrayList<>();
+        try (ZipInputStream zipInputStream = new ZipInputStream(Files.newInputStream(Paths.get(arg)))) {
+            ZipEntry currentEntry;
+            byte[] buffer = new byte[1024];
+            while ((currentEntry = zipInputStream.getNextEntry()) != null) {
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                int length = 0;
+                while ((length = zipInputStream.read(buffer)) > 0) {
+                    outputStream.write(buffer, 0, length);
+                }
+                entries.add(new Content(currentEntry.getName(), outputStream.toByteArray()));
+            }
+        }
+        return entries;
+    }
 
-        while (zipStream.available() > 0) {
-            zipEntries.add(zipStream.getNextEntry());
+    static class Content {
+        String fileName;
+        byte[] body;
+
+        Content(String fileName, byte[] body) {
+            this.fileName = fileName;
+            this.body = body;
         }
 
-        zipStream.close();
-        zipFile.close();
-        return zipEntries;
+        public String getFileName() {
+            return fileName;
+        }
+
+        void saveToZip(ZipOutputStream zip) throws IOException {
+            ZipEntry zipEntry = new ZipEntry(fileName);
+            zip.putNextEntry(zipEntry);
+            zip.write(body);
+            zip.closeEntry();
+        }
     }
 }
