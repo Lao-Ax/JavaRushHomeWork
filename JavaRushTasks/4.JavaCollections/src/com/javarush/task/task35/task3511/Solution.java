@@ -3,6 +3,7 @@ package com.javarush.task.task35.task3511;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /* 
 Wildcards для коллекций
